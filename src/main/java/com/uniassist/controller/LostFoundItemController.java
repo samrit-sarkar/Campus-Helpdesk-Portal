@@ -1,3 +1,4 @@
+
 package com.uniassist.controller;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uniassist.dto.LostFoundItemResponse;
 import com.uniassist.entity.Category;
 import com.uniassist.entity.LostFoundItem;
 import com.uniassist.entity.User;
@@ -40,13 +42,18 @@ public class LostFoundItemController {
 
     // Get all lost and found items
     @GetMapping
-    public List<LostFoundItem> getAllItems() {
-        return itemRepository.findAll();
+    public List<LostFoundItemResponse> getAllItems() {
+        return itemRepository.findAll()
+                .stream()
+                .map(LostFoundItemResponse::new)
+                .toList();
     }
 
     // Get items by type: LOST or FOUND
     @GetMapping("/type/{type}")
-    public ResponseEntity<?> getItemsByType(@PathVariable String type) {
+    public ResponseEntity<?> getItemsByType(
+            @PathVariable String type) {
+
         String itemType = type.toUpperCase();
 
         if (!List.of("LOST", "FOUND").contains(itemType)) {
@@ -54,14 +61,24 @@ public class LostFoundItemController {
                     .body("Type must be LOST or FOUND");
         }
 
-        return ResponseEntity.ok(itemRepository.findByType(itemType));
+        List<LostFoundItemResponse> items = itemRepository
+                .findByType(itemType)
+                .stream()
+                .map(LostFoundItemResponse::new)
+                .toList();
+
+        return ResponseEntity.ok(items);
     }
 
     // Get items by status
     @GetMapping("/status/{status}")
-    public List<LostFoundItem> getItemsByStatus(
+    public List<LostFoundItemResponse> getItemsByStatus(
             @PathVariable String status) {
-        return itemRepository.findByStatus(status.toUpperCase());
+
+        return itemRepository.findByStatus(status.toUpperCase())
+                .stream()
+                .map(LostFoundItemResponse::new)
+                .toList();
     }
 
     // Create a lost/found listing
@@ -69,13 +86,16 @@ public class LostFoundItemController {
     public ResponseEntity<?> createItem(
             @Valid @RequestBody LostFoundItem request) {
 
-        if (request.getUser() == null || request.getUser().getId() == null) {
-            return ResponseEntity.badRequest().body("User ID is required");
+        if (request.getUser() == null
+                || request.getUser().getId() == null) {
+            return ResponseEntity.badRequest()
+                    .body("User ID is required");
         }
 
         if (request.getCategory() == null
                 || request.getCategory().getId() == null) {
-            return ResponseEntity.badRequest().body("Category ID is required");
+            return ResponseEntity.badRequest()
+                    .body("Category ID is required");
         }
 
         String itemType = request.getType() == null
@@ -86,11 +106,13 @@ public class LostFoundItemController {
                     .body("Type must be LOST or FOUND");
         }
 
-        User user = userRepository.findById(request.getUser().getId())
+        User user = userRepository
+                .findById(request.getUser().getId())
                 .orElse(null);
 
         if (user == null) {
-            return ResponseEntity.badRequest().body("User not found");
+            return ResponseEntity.badRequest()
+                    .body("User not found");
         }
 
         Category category = categoryRepository
@@ -98,7 +120,8 @@ public class LostFoundItemController {
                 .orElse(null);
 
         if (category == null) {
-            return ResponseEntity.badRequest().body("Category not found");
+            return ResponseEntity.badRequest()
+                    .body("Category not found");
         }
 
         LostFoundItem item = new LostFoundItem();
@@ -113,7 +136,8 @@ public class LostFoundItemController {
 
         LostFoundItem savedItem = itemRepository.save(item);
 
-        return ResponseEntity.ok(savedItem);
+        return ResponseEntity.ok(
+                new LostFoundItemResponse(savedItem));
     }
 
     // Update item status
@@ -122,7 +146,9 @@ public class LostFoundItemController {
             @PathVariable Long id,
             @RequestParam String status) {
 
-        LostFoundItem item = itemRepository.findById(id).orElse(null);
+        LostFoundItem item = itemRepository
+                .findById(id)
+                .orElse(null);
 
         if (item == null) {
             return ResponseEntity.notFound().build();
@@ -131,19 +157,31 @@ public class LostFoundItemController {
         String newStatus = status.toUpperCase();
 
         if (!List.of(
-                "OPEN", "CLAIM_REQUESTED", "VERIFIED", "RESOLVED"
+                "OPEN",
+                "CLAIM_REQUESTED",
+                "VERIFIED",
+                "RESOLVED"
         ).contains(newStatus)) {
-            return ResponseEntity.badRequest().body("Invalid item status");
+            return ResponseEntity.badRequest()
+                    .body("Invalid item status");
         }
 
         item.setStatus(newStatus);
-        return ResponseEntity.ok(itemRepository.save(item));
+
+        LostFoundItem savedItem = itemRepository.save(item);
+
+        return ResponseEntity.ok(
+                new LostFoundItemResponse(savedItem));
     }
 
     // Get lost/found items by category
     @GetMapping("/category/{categoryId}")
-    public List<LostFoundItem> getItemsByCategory(
+    public List<LostFoundItemResponse> getItemsByCategory(
             @PathVariable Long categoryId) {
-        return itemRepository.findByCategoryId(categoryId);
+
+        return itemRepository.findByCategoryId(categoryId)
+                .stream()
+                .map(LostFoundItemResponse::new)
+                .toList();
     }
 }
