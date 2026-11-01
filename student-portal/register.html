@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Register – UniAssist</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/forms.css"></head>
+<body><div class="auth-wrap"><div class="auth-card">
+<div class="brand"><i class="fa-solid fa-graduation-cap"></i> UniAssist</div>
+<h1>Create Account</h1><p class="sub">Register as a student.</p><div id="formError" class="form-error"></div>
+<form id="registerForm" novalidate>
+<div class="field"><label>Full name</label><input type="text" name="fullName"><div class="err-msg"></div></div>
+<div class="field"><label>Email</label><input type="email" name="email"><div class="err-msg"></div></div>
+<div class="field"><label>Password</label><input type="password" name="password"><div class="err-msg"></div></div>
+<div class="field"><label>Confirm password</label><input type="password" name="confirm"><div class="err-msg"></div></div>
+<div class="field"><label>Role</label><input type="text" value="STUDENT" disabled></div>
+<button class="btn" type="submit">Register</button></form>
+<div class="auth-foot">Already registered? <a href="login.html">Login</a></div>
+</div></div><div id="toasts"></div>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/auth.js"></script></body></html>
