@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Found Item – UniAssist</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css"><link rel="stylesheet" href="../css/forms.css"></head>
+<body data-page="report-found"><div class="layout"><aside id="sidebar" class="sidebar"></aside>
+<div class="main"><header id="topbar" class="topbar"></header><main class="content">
+<h1 class="page-title">Report Found Item</h1><p class="page-sub">Item type will be saved as <b>FOUND</b>.</p>
+<div class="card form-card"><form id="reportForm" data-type="FOUND" novalidate>
+<div class="field"><label>Item name</label><input type="text" name="itemName"><div class="err-msg"></div></div>
+<div class="field"><label>Description</label><textarea name="description"></textarea><div class="err-msg"></div></div>
+<div class="field"><label>Found location</label><input type="text" name="location"><div class="err-msg"></div></div>
+<div class="field"><label>Category</label><select name="category"></select><div class="err-msg"></div></div>
+<div class="field"><label>Image <span class="badge">Coming soon</span></label>
+<div class="disabled-box"><i class="fa-regular fa-image"></i> Image upload isn't supported by the backend yet. No image will be saved.<input type="file" disabled style="display:block;margin-top:8px"></div></div>
+<button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Submit report</button></form></div>
+</main></div></div><div id="toasts"></div>
+<script src="../js/config.js"></script><script src="../js/common.js"></script><script src="../js/auth.js"></script><script src="../js/lost-found.js"></script></body></html>
