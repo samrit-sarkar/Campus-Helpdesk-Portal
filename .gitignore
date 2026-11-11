@@ -1,5 +1,7 @@
 HELP.md
 target/
+**/node_modules/
+/FINDORA_2_0/dist/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

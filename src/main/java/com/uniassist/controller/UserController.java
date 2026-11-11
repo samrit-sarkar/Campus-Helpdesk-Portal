@@ -36,6 +36,7 @@ public class UserController {
                     .body("Email already registered");
         }
 
+        user.setRole("STUDENT");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         User savedUser = userRepository.save(user);

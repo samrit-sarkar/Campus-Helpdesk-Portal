@@ -84,6 +84,11 @@ public class TicketController {
     public ResponseEntity<?> createTicket(
             @Valid @RequestBody Ticket request) {
 
+        if (request.getTitle() == null || request.getTitle().isBlank()) {
+            return ResponseEntity.badRequest()
+                    .body("Ticket title is required");
+        }
+
         if (request.getUser() == null
                 || request.getUser().getId() == null) {
             return ResponseEntity.badRequest()
@@ -116,6 +121,7 @@ public class TicketController {
         Ticket ticket = new Ticket();
         ticket.setUser(user);
         ticket.setCategory(category);
+        ticket.setTitle(request.getTitle());
         ticket.setRoomNo(request.getRoomNo());
         ticket.setDescription(request.getDescription());
         ticket.setPriority("MEDIUM");

@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tickets – UniAssist Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/admin.css"></head>
+<body data-page="tickets"><div class="layout"><aside id="sidebar" class="sidebar"></aside>
+<div class="main"><header id="topbar" class="topbar"></header><main class="content">
+<h1 class="page-title">Tickets</h1><p class="page-sub">Review, prioritise, assign and resolve student tickets.</p>
+<div class="toolbar"><div><label for="fStatus">Status</label><select id="fStatus"></select></div>
+<div><label for="fCategory">Category</label><select id="fCategory"><option value="">All categories</option></select></div>
+<div class="grow"></div><button class="btn btn-outline" id="reload"><i class="fa-solid fa-rotate"></i> Refresh</button></div>
+<p class="count-line" id="count"></p>
+<div class="card table-wrap"><table><thead><tr><th>ID</th><th>Student</th><th>Category</th><th>Title</th><th>Room</th><th>Description</th><th>Priority</th><th>Status</th><th>Created</th><th>Assigned to</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main></div></div><div id="toasts"></div>
+<script src="../js/api.js"></script><script src="../js/auth.js"></script><script src="../js/common.js"></script><script src="../js/tickets.js"></script></body></html>
