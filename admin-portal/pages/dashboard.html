@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard – UniAssist Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/admin.css"></head>
+<body data-page="dashboard"><div class="layout"><aside id="sidebar" class="sidebar"></aside>
+<div class="main"><header id="topbar" class="topbar"></header><main class="content">
+<h1 class="page-title" id="welcome">Welcome</h1><p class="page-sub">Overview of maintenance tickets and lost &amp; found reports.</p>
+<div class="stats" id="stats"></div>
+<div class="card" style="margin-bottom:18px"><h3 style="margin-bottom:12px">Recent tickets</h3><div id="recent" class="table-wrap"></div>
+<p style="margin-top:12px"><a href="tickets.html">View all tickets &rarr;</a></p></div>
+<div class="card"><h3 style="margin-bottom:8px">Lost &amp; Found</h3><p id="lfSummary" class="muted">Loading…</p><p style="margin-top:10px"><a href="lost-found.html">Manage reports &rarr;</a></p></div>
+</main></div></div><div id="toasts"></div>
+<script src="../js/api.js"></script><script src="../js/auth.js"></script><script src="../js/common.js"></script><script src="../js/dashboard.js"></script></body></html>

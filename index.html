@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UniAssist – Campus Helpdesk</title>
+    <style>
+        :root { color-scheme: light; font-family: system-ui, sans-serif; color: #172033; background: #f3f6fb; }
+        body { box-sizing: border-box; margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+        main { width: min(760px, 100%); }
+        h1 { margin-bottom: 8px; }
+        p { color: #526078; }
+        .portals { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+        a { display: block; padding: 24px; border: 1px solid #dce3ee; border-radius: 12px; background: white; color: inherit; text-decoration: none; }
+        a:hover, a:focus-visible { border-color: #4263eb; box-shadow: 0 8px 24px #17203314; }
+        h2 { margin: 0 0 8px; }
+        a p { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>UniAssist</h1>
+        <p>Campus helpdesk for maintenance requests and Lost &amp; Found.</p>
+        <div class="portals">
+            <a href="http://localhost:5173/">
+                <h2>UniAssist student portal</h2>
+                <p>Create and track tickets, or report and browse Lost &amp; Found items.</p>
+            </a>
+            <a href="admin-portal/login.html">
+                <h2>Staff / admin portal</h2>
+                <p>Review tickets, manage categories, and update Lost &amp; Found reports.</p>
+            </a>
+        </div>
+        <p>Start the student portal with <code>npm run dev</code> from <code>FINDORA_2_0/</code>.</p>
+    </main>
+</body>
+</html>

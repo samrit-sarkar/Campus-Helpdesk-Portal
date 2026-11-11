@@ -29,6 +29,9 @@ public class Ticket {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @Column(length = 255)
+    private String title;
+
     @NotBlank(message = "Room number is required")
     @Column(name = "room_no", nullable = false)
     private String roomNo;
@@ -60,6 +63,9 @@ public class Ticket {
 
     public Category getCategory() { return category; }
     public void setCategory(Category category) { this.category = category; }
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
     public String getRoomNo() { return roomNo; }
     public void setRoomNo(String roomNo) { this.roomNo = roomNo; }

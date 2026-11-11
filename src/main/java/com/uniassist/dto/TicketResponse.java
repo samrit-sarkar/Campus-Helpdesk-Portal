@@ -12,6 +12,7 @@ public class TicketResponse {
     private String userName;
     private Long categoryId;
     private String categoryName;
+    private String title;
     private String roomNo;
     private String description;
     private String priority;
@@ -26,6 +27,7 @@ public class TicketResponse {
         this.userName = ticket.getUser().getName();
         this.categoryId = ticket.getCategory().getId();
         this.categoryName = ticket.getCategory().getName();
+        this.title = ticket.getTitle();
         this.roomNo = ticket.getRoomNo();
         this.description = ticket.getDescription();
         this.priority = ticket.getPriority();
@@ -43,6 +45,7 @@ public class TicketResponse {
     public String getUserName() { return userName; }
     public Long getCategoryId() { return categoryId; }
     public String getCategoryName() { return categoryName; }
+    public String getTitle() { return title; }
     public String getRoomNo() { return roomNo; }
     public String getDescription() { return description; }
     public String getPriority() { return priority; }
